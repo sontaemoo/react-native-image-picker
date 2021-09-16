@@ -298,8 +298,13 @@ public class Utils {
             case "image/jpeg": return "jpg";
             case "image/png": return "png";
             case "image/gif": return "gif";
+            default:
+                if (mimeType.lastIndexOf("/") != -1) {
+                    return mimeType.substring(mimeType.lastIndexOf("/") + 1, mimeType.length());
+                } else {
+                    return mimeType;
+                }
         }
-        return "jpg";
     }
 
     static void deleteFile(Uri uri) {
